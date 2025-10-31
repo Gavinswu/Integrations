@@ -1,6 +1,6 @@
 # Copyright (c) 2025 Broadcom Inc. and its subsidiaries. All Rights Reserved.
 
-ARG LAYER7_GATEWAY_IMAGE=caapim/gateway:latest
+ARG GW_IMAGE=caapim/gateway:latest
 ARG BUILDER_IMAGE=docker.io/debian:13
 
 # Provide Packages
@@ -45,7 +45,7 @@ RUN cd /tmp && \
         dpkg --extract $deb /dpkg || exit 10; \
     done
 
-FROM ${LAYER7_GATEWAY_IMAGE}
+FROM ${GW_IMAGE}
 
 USER root
 COPY --from=builder /dpkg /
